@@ -9,7 +9,7 @@ This repository provides the flood markup language use cases that is presented i
 Zhongrun Xiang, Ibrahim Demir. (2020). Flood Markup Language – A Standards-based Language for Flood Data Exchange. TBD.
 
 ## Use Cases
-
+![schema](/schema/schema_database_v1.0.jpg)
 
 ## Citation
 If you use the specification or flood event inventory please cite the following publication:

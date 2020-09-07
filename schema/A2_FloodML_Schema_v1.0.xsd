@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema elementFormDefault="qualified"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+  <!-- definition of main schema -->
+  <xs:element name="site">
+    <xs:complexType>
+      <xs:sequence>
+        
+        <xs:element name="metadata">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="id"/>
+              <xs:element ref="name"/>
+              <xs:element ref="no" minOccurs="0"/>
+              <xs:element ref="status"/>
+              <xs:element name="issuedby">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="name"/>
+					<xs:element name="contact" minOccurs = "0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element ref="name"/>
+                          <xs:element ref="id"/>
+                          <xs:element ref="email"/>
+                          <xs:element name="phone" type="phoneType" default="319-000-0000"/>
+                          <xs:element name="fax" type="phoneType" default="319-000-0000"/>
+                          <xs:element ref="address"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="web" minOccurs="0"/>
+                    <xs:element ref="system" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="issuedtime" type="xs:dateTime"/>
+              <xs:element ref="tag" minOccurs = "0" maxOccurs = "unbounded"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+        <xs:element name="data">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="category" maxOccurs="unbounded"/>
+              <xs:element name="station" minOccurs = "0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="id"/>
+                    <xs:element ref="name"/>
+					<xs:element name="waterbody" minOccurs = "0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element ref="id"/>
+                          <xs:element ref="name"/>
+                          <xs:element ref="type"/>
+                          <xs:element ref="linkid" minOccurs = "0"/>
+                          <xs:element ref="upstream" minOccurs = "0"/>
+                          <xs:element ref="downstream" minOccurs = "0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="coord"/>
+                    <xs:element ref="ele" minOccurs = "0"/>
+                    <xs:element ref="zdatum" minOccurs = "0"/>
+                    <xs:element ref="address" minOccurs = "0"/>
+                    <xs:element ref="note" minOccurs = "0"/>
+					<xs:element ref="web" minOccurs="0"/>
+				  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="background" minOccurs = "0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="rating" minOccurs = "0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="datum" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:attribute ref="stage" use="optional" />
+                              <xs:attribute ref="stageUnits" use="optional" />
+                              <xs:attribute ref="flow" use="optional"/>
+                              <xs:attribute ref="flowUnits" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute ref="dignity" use="optional" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="floodlevel" minOccurs = "0" maxOccurs="unbounded"/>
+                    <xs:element ref="crest" minOccurs = "0" maxOccurs="unbounded"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="area" minOccurs = "0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="address" minOccurs = "0" maxOccurs="unbounded"/>
+                    <xs:element name="circle"  minOccurs = "0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element ref="coord"/>
+                          <xs:element ref="radius"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="polygon" minOccurs = "0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:string">
+                            <xs:attribute ref="hdatum" use="optional" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="geocode" minOccurs = "0" maxOccurs="unbounded"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="event" minOccurs = "0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="model">
+						<xs:complexType>
+						  <xs:sequence>
+							<xs:element ref="id"/>
+							<xs:element ref="name"/>
+							<xs:element ref="version" minOccurs="0"/>
+							<xs:element ref="timestep" minOccurs="0"/>
+							<xs:element ref="scenario" minOccurs = "0" maxOccurs = "unbounded"/>
+						  </xs:sequence>
+						</xs:complexType>
+					</xs:element>					
+					<xs:element name="data" minOccurs = "0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element  name="datum" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:attribute ref="time" use="required" />
+                              <xs:attribute ref="unit"  use="required" />
+                              <xs:attribute ref="value" use="required" />
+                              <xs:attribute ref="type" use="optional" />
+                            </xs:complexType>
+                          </xs:element>
+						  <xs:element ref="web" minOccurs = "0"/>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+					<xs:element name="alert" minOccurs = "0">
+						<xs:complexType>
+						  <xs:sequence>
+							<xs:element name="headline" type="xs:string" />
+							<xs:element ref="id"/>
+							<xs:element ref="name"/>
+							<xs:element name="type">
+							  <xs:simpleType>
+								<xs:restriction base="xs:string">
+								  <xs:enumeration value="Coastal Flood Watch"/>
+								  <xs:enumeration value="Coastal Flood Warning"/>
+								  <xs:enumeration value="Coastal Flood Advisory"/>
+								  <xs:enumeration value="Flash Flood Watch"/>
+								  <xs:enumeration value="Flash Flood Warning"/>
+								  <xs:enumeration value="Flood Watch"/>
+								  <xs:enumeration value="Flood Warning"/>
+								  <xs:enumeration value="River Flood Watch"/>
+								  <xs:enumeration value="River Flood Warning"/>
+								</xs:restriction>
+							  </xs:simpleType>
+							</xs:element>
+							<xs:element name="urgency">
+							  <xs:simpleType>
+								<xs:restriction base="xs:string">
+								  <xs:enumeration value="Immediate"/>
+								  <xs:enumeration value="Expected"/>
+								  <xs:enumeration value="Future"/>
+								  <xs:enumeration value="Past"/>
+								  <xs:enumeration value="Unknown"/>
+								</xs:restriction>
+							  </xs:simpleType>
+							</xs:element>
+							<xs:element name="severity">
+							  <xs:simpleType>
+								<xs:restriction base="xs:string">
+								  <xs:enumeration value="Extreme"/>
+								  <xs:enumeration value="Severe"/>
+								  <xs:enumeration value="Moderate"/>
+								  <xs:enumeration value="Minor"/>
+								  <xs:enumeration value="Unknown"/>
+								</xs:restriction>
+							  </xs:simpleType>
+							</xs:element>
+							<xs:element name="certainty">
+							  <xs:simpleType>
+								<xs:restriction base="xs:string">
+								  <xs:enumeration value="Observed"/>
+								  <xs:enumeration value="Likely"/>
+								  <xs:enumeration value="Possible"/>
+								  <xs:enumeration value="Unlikely"/>
+								  <xs:enumeration value="Unknown"/>
+								</xs:restriction>
+							  </xs:simpleType>
+							</xs:element>
+							<xs:element name="scope">
+							  <xs:simpleType>
+								<xs:restriction base="xs:string">
+								  <xs:enumeration value="Public"/>
+								  <xs:enumeration value="Restricted"/>
+								  <xs:enumeration value="Internal"/>
+								</xs:restriction>
+							  </xs:simpleType>
+							</xs:element>
+							<xs:element name="effective" type="xs:dateTime" />
+							<xs:element name="expire" type="xs:dateTime" />
+							<xs:element ref="note"/>
+							<xs:element name="instruction" type="xs:string" />
+							<xs:element ref="web"/>
+						  </xs:sequence>
+						</xs:complexType>
+					  </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+
+
+  <!-- definition of simple elements -->
+  <xs:element name="id" type="xs:string"/>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="no" type="xs:long"/>
+  <xs:element name="web" type="xs:anyURI"/>
+  <xs:element name="system" type="xs:string"/>
+  <xs:element name="version" type="xs:string"/>
+  <xs:element name="scenario" type="xs:string"/>
+  <xs:element name="tag" type="xs:string"/>
+  <xs:element name="timestep" type="xs:string"/>
+  <xs:element name="type" type="xs:string"/>
+  <xs:element name="note" type="xs:string" />
+  <xs:element name="linkid" type="xs:string" />
+  <xs:element name="upstream" type="xs:string" />
+  <xs:element name="downstream" type="xs:string"/>
+  <xs:attribute name="stage" type="xs:decimal"/>
+  <xs:attribute name="stageUnits" type="xs:string" default="ft"/>
+  <xs:attribute name="flow" type="xs:decimal"/>
+  <xs:attribute name="flowUnits" type="xs:string" default="cfs"/>
+  <xs:attribute name="dignity" type="xs:string" />
+  <xs:attribute name="unit" type="xs:string"/>
+  <xs:attribute name="value" type="xs:decimal"/>
+  <xs:attribute name="time" type="xs:dateTime"/>
+  <xs:attribute name="hdatum" type="xs:string"/>
+  <xs:attribute name="type" type="xs:string"/>
+  <xs:attribute name="model" type="xs:string"/>
+  <xs:attribute name="updatetime" type="xs:dateTime"/>
+                
+
+
+  <!-- definition of complex types -->
+  <xs:simpleType name="phoneType">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\d{3}-\d{3}-\d{4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- definition of complex elements -->
+  <xs:element name="status">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="draft"/>
+        <xs:enumeration value="valid"/>
+        <xs:enumeration value="past"/>
+        <xs:enumeration value="cancelled"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+  <xs:element name="category">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="alert"/>
+        <xs:enumeration value="24h forecast"/>
+        <xs:enumeration value="48h forecast"/>
+        <xs:enumeration value="72h forecast"/>
+        <xs:enumeration value="5d forecast"/>
+        <xs:enumeration value="7d forecast"/>
+        <xs:enumeration value="10d forecast"/>
+        <xs:enumeration value="15d forecast"/>
+        <xs:enumeration value="30d forecast"/>
+        <xs:enumeration value="observation"/>
+        <xs:enumeration value="alert"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+  <xs:element name="email">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="([0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\w]*[0-9a-zA-Z]\.)+[a-zA-Z]{2,9})"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+  <xs:element name="address">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="nation" type="xs:string" minOccurs = "0"/>
+        <xs:element name="state" type="xs:string" minOccurs = "0"/>
+        <xs:element name="county" type="xs:string" minOccurs = "0"/>
+        <xs:element name="city" type="xs:string" minOccurs = "0"/>
+        <xs:element name="zip">
+          <xs:simpleType>
+            <xs:restriction base="xs:int">
+              <xs:pattern value="\d{5}"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="street" type="xs:string" minOccurs = "0"/>
+        <xs:element name="note" type="xs:string" minOccurs = "0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="coord">
+    <xs:complexType>
+      <xs:attribute name="hdatum" type="xs:string" use="optional" />
+      <xs:attribute name="lat" type="xs:decimal" use="required" />
+      <xs:attribute name="lon" type="xs:decimal" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ele">
+    <xs:complexType>
+      <xs:attribute name="vdatum" type="xs:string" use="required" />
+      <xs:attribute ref="unit" use="required" />
+      <xs:attribute ref="value" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="floodlevel">
+    <xs:complexType>
+      <xs:attribute name="type" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="flow" />
+            <xs:enumeration value="stage" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="level" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="low" />
+            <xs:enumeration value="action" />
+            <xs:enumeration value="bankfull" />
+            <xs:enumeration value="flood" />
+            <xs:enumeration value="moderate" />
+            <xs:enumeration value="major" />
+            <xs:enumeration value="record" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute ref="unit" use="required" />
+      <xs:attribute ref="value" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="crest">
+    <xs:complexType>
+      <xs:attribute ref="time" use="required" />
+      <xs:attribute ref="unit" use="required" />
+      <xs:attribute ref="value" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="radius">
+    <xs:complexType>
+      <xs:attribute ref="unit" use="required" />
+      <xs:attribute ref="value" use="required" />
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="geocode">
+    <xs:complexType>
+      <xs:attribute ref="type" use="required" />
+      <xs:attribute name="value" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+  
+</xs:schema>

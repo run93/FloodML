@@ -9,3 +9,19 @@ This repository provides the flood data event specification that is presented in
 
 Zhongrun Xiang, Ibrahim Demir. (2020). Flood Markup Language – A Standards-based Language for Flood Data Exchange. TBD.
 
+## Use Cases
+
+
+## Citation
+If you use the specification or flood event inventory please cite the following publication:
+Zhongrun Xiang, Ibrahim Demir. (2020). Flood Markup Language – A Standards-based Language for Flood Data Exchange. TBD.
+
+## Feedback
+Feedbacks are always welcomed to improve this new markup language.
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgements
+This project is developed by the University of Iowa Hydroinformatics Lab (UIHI Lab):
+https://hydroinformatics.uiowa.edu/.

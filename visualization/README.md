@@ -1,11 +1,11 @@
 # FloodML Visualization
 
-## Flood alert visualization with plots and map.
+## Flood alert visualization with plots and map
 ![vis2](/visualization/forecast_with_map/vis_forecast_with_map.jpg)
 http://iihr-vl01.iihr.uiowa.edu/dev/zhongrun/vis_forecast_with_map.html
 
 
-## Multiple streamflow forecast data from multiple models and sources.
+## Multiple streamflow forecast data from multiple models and sources
 ![vis2](/visualization/multiple_forecasts/vis_multiple_forecasts.jpg)
 http://iihr-vl01.iihr.uiowa.edu/dev/zhongrun/vis_multi_forecast.html
 

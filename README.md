@@ -13,10 +13,8 @@ Zhongrun Xiang, Ibrahim Demir. (2020). Flood Markup Language – A Standards-bas
 FloodML can be visualized directly through mobile application, which is more efficient than compressing and transferring an image. The geolocation of station from metadata and affected area from alerts in the FloodML can be visualized on the map as well as shown below.
 
 ![vis2](/visualization/forecast_with_map/vis_forecast_with_map.jpg)
-http://iihr-vl01.iihr.uiowa.edu/dev/zhongrun/vis_forecast_with_map.html
 
 ![vis2](/visualization/multiple_forecasts/vis_multiple_forecasts.jpg)
-http://iihr-vl01.iihr.uiowa.edu/dev/zhongrun/vis_multi_forecast.html
 
 ## Citation
 If you use the specification or flood event inventory please cite the following publication:

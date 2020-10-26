@@ -48,11 +48,13 @@ Additional river and weather information is available at
 www.weather.gov/ilx.</instruction>
       <detail />
       <affected_area>40.53,-89.88 40.47,-89.8 40.34,-90.02 40.12,-90.17 40.18,-90.23 40.39,-90.1 40.53,-89.88</affected_area>
-      <affected_geocode type="FIPS6" value="017017" />
-      <affected_geocode type="FIPS6" value="017057" />
-      <affected_geocode type="FIPS6" value="017125" />
-      <affected_geocode type="UGC" value="ILC017" />
-      <affected_geocode type="UGC" value="ILC057" />
-      <affected_geocode type="UGC" value="ILC125" />
+      <affected_geocodes>
+         <geocode type="FIPS6" value="017017" />
+         <geocode type="FIPS6" value="017057" />
+         <geocode type="FIPS6" value="017125" />
+         <geocode type="UGC" value="ILC017" />
+         <geocode type="UGC" value="ILC057" />
+         <geocode type="UGC" value="ILC125" />
+      </affected_geocodes>
    </alert>
 </site>

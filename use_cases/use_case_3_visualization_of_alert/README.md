@@ -5,5 +5,6 @@ Since the station information and aleat affected area are shown in FloodML, the 
 
 ## Time-Series Plots of the Alert Data
 Alert-related time-series data can be plotted by the javascripts directly. Here the example shows the alert-related data in dygraph.js.
+Download the html file and custmize your own visualization map with your google map API key.
 ![vis1](/use_cases/use_case_3_visualization_of_alert/vis_of_alert.jpg)
 
